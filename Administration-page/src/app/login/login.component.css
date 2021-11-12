@@ -16,3 +16,41 @@ body{
     height: 100%;
     position: fixed;
 }
+
+.form-input{
+    margin-left: 1rem;
+    width: 22rem;
+    padding-top: 0.125rem;
+    padding-bottom: 0.125rem;
+    border-radius: 6px;
+    background-color: #659DE6;
+    color: #fff;
+}
+
+.form-p{
+    color: #fff;
+    font-size: larger;
+}
+
+.form-login{
+    background-color: #4A8CE1;
+    border-radius: 11px;
+}
+
+.form-b{
+    background-color: #1E61B9;
+    margin-left: 1rem;
+    padding-left: 35%;
+    padding-right: 35%;
+    border-radius: 11px;
+    color: #fff;
+}
+
+.rear-bottom{
+    border-radius: 11px;
+    background-color: #1E61B9;
+    width: 27.5%;
+    height: 50%;
+    margin-top: 14%;
+    margin-left: 2%;
+}
