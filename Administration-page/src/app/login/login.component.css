@@ -7,6 +7,11 @@ body{
     background-color: #F7F7F7;
 }
 
+.favicon{
+    max-width: 4rem;
+
+}
+
 .body-page{
     background-image: url("../../assets/Fondo-Login.png");
     background-size: cover;
