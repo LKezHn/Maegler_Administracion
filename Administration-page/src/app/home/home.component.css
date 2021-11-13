@@ -18,6 +18,10 @@
     max-width: 12.5rem;
 }
 
+.btn{
+    color: #203C61;
+}
+
 .btn:active{
     color: #fff;
     background-color: #203C61;
