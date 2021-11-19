@@ -1,0 +1,12 @@
+.open{
+  display: flex;
+}
+
+.close{
+  display: none;
+}
+
+.order-button{
+  border: 3px solid var(--darkblue);
+  color: var(--darkblue);
+}

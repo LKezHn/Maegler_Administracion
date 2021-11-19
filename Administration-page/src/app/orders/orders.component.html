@@ -1,0 +1,58 @@
+<div class="pt-16 px-8 grid grid-cols-4">
+  <div class="p-2" *ngFor="let order of orders">
+    <div style="background-color: var(--blue); color: var(--white);"
+      class="cursor-pointer p-2 place-items-center h-full w-full rounded-md grid grid-rows-2">
+      <div class=" h-full w-full p-5 grid place-items-center m-2 rounded-md" style="background-color: white;">
+        <img src="{{order.logo}}" alt="" width="120" height="120">
+      </div>
+      <div class="p-2 w-full mx-2">
+        <div class="text-lg text-center font-semibold uppercase">
+          Orden #{{order.id}}
+        </div>
+        <div style="color: rgba(242, 242, 242, 0.7);">
+          <div class="text-sm text-left">
+            Receptor: {{order.receiver}}
+          </div>
+          <div class="text-sm text-left">
+            Direccion: {{order.direction}}
+          </div>
+          <div class=" mt-2 grid justify-items-center">
+            <button class="text-sm uppercase px-3 py-1 rounded-md"
+              style="font-family: 'Puritan', sans-serif;background-color: var(--darkblue); color: var(--white);"
+              (click)="openModal()">Asignar
+              Orden</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div [ngClass]="isOpen ? 'open' : 'close' "
+  class="h-screen w-full fixed left-0 top-0 flex justify-center items-center bg-black bg-opacity-50">
+  <!-- modal -->
+  <div class="bg-white rounded shadow-lg w-10/12 md:w-1/3">
+    <!-- modal header -->
+    <div class="border-b px-4 py-2 flex justify-between items-center rounded-md">
+      <h3 class="font-semibold text-lg text-center" style="color: rgba(0, 0, 0, 0.5);">Asignar Orden</h3>
+      <button class="text-black close-modal" (click)="isOpen = false">&cross;</button>
+    </div>
+    <!-- modal body -->
+    <div class="p-3">
+      <div class="block">
+        <div class="mt-2" *ngFor="let driver of drivers">
+          <div>
+            <label class="grid grid-cols-2 justify-items-stretch">
+              <span class="ml-2 text-base font-semibold" style="color: var(--darkblue);">{{driver.name}}</span>
+              <div class="px-6 grid justify-items-end">
+                <button class="text-xs order-button px-3 py-1 rounded-md uppercase" (click)="isOpen = false">Asignar</button>
+              </div>
+            </label>
+          </div>
+        </div>
+      </div>
+      <div class="flex justify-end items-center w-100 border-t p-3">
+      </div>
+    </div>
+  </div>
+</div>
