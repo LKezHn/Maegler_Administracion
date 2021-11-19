@@ -1,6 +1,21 @@
 @import 'tailwindcss/base';
 @import 'tailwindcss/components';
 @import 'tailwindcss/utilities';
+
+:root{
+  --white: #f7f7f7;
+  --blackblue: #203C61;
+  --secondary-blue: #396CAD;
+  --darkblue: #1E61B9;
+  --blue: #4A8CE1;
+  --lightblue: #659DE6;
+  --red: #E06D60;
+  --lightred: #E48378;
+  --darkred: #D33B2A;
+  --blackred: #992B1E;
+  --gray: #B2B2B2
+}
+
 /* You can add global styles to this file, and also import other style files */
 
 body{
