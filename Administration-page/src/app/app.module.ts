@@ -5,18 +5,39 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
 import { HomeComponent } from './home/home.component';
+import { CompaniesComponent } from './companies/companies.component';
+import { DriversComponent } from './drivers/drivers.component';
+import { OrdersComponent } from './orders/orders.component';
+import { CompaniesService } from './companies.service';
+import { CompanyDetailsComponent } from './company-details/company-details.component';
+import { AddCompanyComponent } from './add-company/add-company.component';
+import { FormsModule } from '@angular/forms';
+import { OrdersService } from './orders.service';
+import { AcceptedDriversComponent } from './accepted-drivers/accepted-drivers.component';
+import { ForAcceptDriversComponent } from './for-accept-drivers/for-accept-drivers.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
-    HomeComponent
+    HomeComponent,
+    CompaniesComponent,
+    DriversComponent,
+    OrdersComponent,
+    CompanyDetailsComponent,
+    AddCompanyComponent,
+    AcceptedDriversComponent,
+    ForAcceptDriversComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    FormsModule
   ],
-  providers: [],
+  providers: [
+    CompaniesService,
+    OrdersService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
