@@ -1,0 +1,38 @@
+<div class="pt-16 px-8">
+  <div class="relative">
+    <div style="z-index: -1;" class="h-60 object-none rounded-md">
+      <img class="object-none h-full w-full" src="{{currCompany.banner}}">
+    </div>
+    <div class="absolute z-10 grid justify-items-center w-full px-8 pt-1" style="bottom: -45px;">
+      <div class="bg-white p-3 rounded-md">
+        <img class="" width="120" height="120" src="{{currCompany.logo}}" alt="">
+      </div>
+      <p class="text-center text-lg font-semibold uppercase" style="color: var(--blue);">{{currCompany.name}}</p>
+    </div>
+  </div>
+  <p class="mt-16 mb-2 px-10 text-lg font-semibold uppercase" style="color: var(--blue);">Productos</p>
+  <div class="grid grid-cols-4 px-8">
+    <div class="p-1" *ngFor="let product of currCompany.products">
+      <div style="background-color: var(--blue); color: var(--white);"
+        class="cursor-pointer p-2 place-items-center h-full w-full rounded-md grid grid-rows-3">
+        <div class=" h-full w-full p-2 grid place-items-center m-2 rounded-md row-span-2"
+          style="background-color: white;">
+          <img src="{{product.photo}}" alt="" width="120" height="120">
+        </div>
+        <div class="m-0 p-0 text-center">
+          <p class="font-semibold">
+            {{product.name}}
+          </p>
+          <span class="text-sm">
+            Precio: {{product.price}}
+          </span>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="flex flex-row-reverse px-8 my-2">
+    <div class="px-3 py-1 rounded uppercase font-medium cursor-pointer" (click)="addProduct()" style="background-color: #D33B2A; color: var(--white);">
+      Agregar Producto
+    </div>
+  </div>
+</div>

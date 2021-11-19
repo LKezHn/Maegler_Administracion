@@ -1,0 +1,14 @@
+<div class="pt-16 px-8 grid grid-cols-4">
+  <div class="p-2" *ngFor="let company of companies">
+    <div (click)="getCompanyDetails(company)" style="background-color: var(--blue); color: var(--white);"
+      class="cursor-pointer p-2 place-items-center h-full w-full rounded-md grid grid-rows-3">
+      <div class=" h-full w-full p-5 grid place-items-center m-2 rounded-md row-span-2"
+        style="background-color: white;">
+        <img src="{{company.logo}}" alt="" width="110" height="110">
+      </div>
+      <div class="m-0 p-0 text-lg font-semibold uppercase">
+        {{company.name}}
+      </div>
+    </div>
+  </div>
+</div>
