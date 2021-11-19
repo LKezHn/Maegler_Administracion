@@ -1,0 +1,9 @@
+.active{
+  background-color: var(--darkblue);
+  color: var(--white);
+}
+
+.inactive{
+  background-color: rgba(145, 181, 230, 0.6);
+  color:var(--blackblue)
+}

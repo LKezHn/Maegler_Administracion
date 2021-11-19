@@ -1,0 +1,18 @@
+<div class="pt-16 px-8 w-full">
+  <div class="w-full grid grid-cols-2 justify-items-center">
+    <div class="grid w-full justify-items-end">
+      <div (click)="getAcceptedDrivers()" class="rounded-l-lg py-2 px-7 font-semibold text-base uppercase cursor-pointer"
+      [ngClass]=" isInActive ? 'active' : 'inactive'">Activos</div>
+    </div>
+    <div class="grid w-full justify-items-start">
+      <div (click)="getForAcceptDrivers()" class="rounded-r-lg py-2 px-3 font-semibold text-base uppercase cursor-pointer"
+      [ngClass]=" isInForAccept ? 'active' : 'inactive'">Por Aceptar</div>
+    </div>
+  </div>
+  <div *ngIf="isInActive">
+    <app-accepted-drivers></app-accepted-drivers>
+  </div>
+  <div *ngIf="isInForAccept">
+    <app-for-accept-drivers></app-for-accept-drivers>
+  </div>
+</div>
