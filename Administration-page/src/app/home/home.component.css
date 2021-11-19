@@ -22,7 +22,7 @@
     color: #203C61;
 }
 
-.btn:active{
+.active{
     color: #fff;
     background-color: #203C61;
     border-radius: 20px;
@@ -38,4 +38,10 @@
     margin-left: 88%;
     margin-top: 2%;
     color: #4A8CE1;
+}
+
+.body-content{
+  margin-left: 17%;
+  width: 83%;
+  height: 100vh;
 }

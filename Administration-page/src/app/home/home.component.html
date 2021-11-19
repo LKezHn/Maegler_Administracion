@@ -1,26 +1,47 @@
 <div class="body-page">
-    <div class="taskbar-left absolute">
-        <img class="logo pl-5 pt-4 mb-48" src="./assets/Logo.png">
-        <button type="button" class="grid grid-cols-3 ml-4 mr-2 pl-4 pr-12 pt-2 pb-2 btn">
-            <div class="business">
-                <i class="fas fa-building"></i>
-            </div>
-            <div>Empresas</div>
-        </button>
-        <button type="button" class="grid grid-cols-3 ml-4 mr-2 pl-4 pr-12 pt-2 pb-2 btn">
-            <div>
-                <i class="fas fa-shopping-bag"></i>
-            </div>
-            <div>Ordenes</div>
-        </button>
-        <button type="button" class="grid grid-cols-3 ml-4 mr-2 pl-4 pr-12 pt-2 pb-2 btn">
-            <div>
-                <i class="fas fa-motorcycle"></i>
-            </div>
-            <div>Repartidores</div>
-        </button>
+  <div class="taskbar-left absolute">
+    <img class="logo pl-5 pt-4 mb-48" src="./assets/Logo.png">
+    <button type="button" class="grid grid-cols-3 ml-4 mr-2 pl-4 pr-12 pt-2 pb-2 btn" (click)="getCompanies()"
+      [ngClass]="isInCompanies || cS.isInCompanyDetails || cS.addCompany ? 'active' : ''">
+      <div class="business">
+        <i class="fas fa-building"></i>
+      </div>
+      <div>Empresas</div>
+    </button>
+    <button type="button" class="grid grid-cols-3 ml-4 mr-2 pl-4 pr-12 pt-2 pb-2 btn" (click)="getOrders()"
+      [ngClass]="isInOrders ? 'active' : ''">
+      <div>
+        <i class="fas fa-shopping-bag"></i>
+      </div>
+      <div>Ordenes</div>
+    </button>
+    <button type="button" class="grid grid-cols-3 ml-4 mr-2 pl-4 pr-12 pt-2 pb-2 btn" (click)="getDrivers()"
+      [ngClass]="isInDrivers ? 'active' : ''">
+      <div>
+        <i class="fas fa-motorcycle"></i>
+      </div>
+      <div>Repartidores</div>
+    </button>
+  </div>
+  <div class="body-content overflow-y-auto">
+    <div class="flex justify-end py-3 px-5 btn" [routerLink]="['/login']">
+      <p class="font-medium cursor-pointer" style="color: var(--blue);">Cerrar Sesión</p>
     </div>
-    <div class="contenido absolute">
-        <button type="button" class="btn-close">Cerrar Sesión</button>
+    <div *ngIf="isInCompanies && !cS.isInCompanyDetails && !cS.addCompany">
+      <app-companies></app-companies>
     </div>
+    <div *ngIf="isInOrders">
+      <app-orders></app-orders>
+    </div>
+    <div *ngIf="isInDrivers">
+      <app-drivers></app-drivers>
+    </div>
+    <div *ngIf="cS.isInCompanyDetails">
+      {{getCompanyDetails()}}
+      <app-company-details></app-company-details>
+    </div>
+    <div *ngIf="cS.addCompany">
+      <app-add-company (closeEvent)="closeAddCompany($event)"></app-add-company>
+    </div>
+  </div>
 </div>
