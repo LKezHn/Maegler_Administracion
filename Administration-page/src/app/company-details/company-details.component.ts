@@ -10,15 +10,17 @@ export class CompanyDetailsComponent implements OnInit {
 
   currCompany : Company | any;
 
-  constructor(private cS: CompaniesService) { }
+  constructor(private companyService: CompaniesService) { }
 
   ngOnInit(): void {
-    this.currCompany = this.cS.getCurrentCompany();
+    this.companyService.getCompanyDetails().subscribe( res => {
+      this.currCompany = res.company
+    })
   }
 
   addProduct(){
-    this.cS.isInCompanyDetails = false;
-    this.cS.addCompany = true;
+    this.companyService.isInCompanyDetails = false;
+    this.companyService.addCompany = true;
   }
 
 }

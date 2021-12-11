@@ -1,16 +1,23 @@
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 
 export interface Product{
-  name: string,
-  photo: string,
-  price: string
+  id: string
+  nombre: string,
+  imagen: string,
+  informacion: string,
+  precio: string
 }
 
 export interface Company{
-  name: string,
+  nombre: string,
   logo: string,
   banner: string,
-  products: Product[]
+  direccion_empresa: string,
+  informacion: string,
+  suma_calificaciones: string,
+  numero_calificaciones: string,
+  productos: Product[]
 }
 
 
@@ -19,114 +26,26 @@ export interface Company{
 })
 export class CompaniesService {
 
-  private company : any;
-  private companies : Company[] = [
-    {
-      name: "BurgerKing",
-      logo: "../../assets/burguerKing.jpg",
-      banner: "../../assets/burguerKing_banner.jpg",
-      products: [
-        {
-          name: "Bacon King",
-          price: "L.130.00",
-          photo: "../../assets/baconKing.png"
-        },
-        {
-          name: "Hamburguesa con Queso",
-          price: "L.120.00",
-          photo: "../../assets/cheeseBurguer.png"
-        }
-      ]
-    },
-    {
-      name: "Matambritas",
-      logo: "../../assets/matambritas.png",
-      banner: "../../assets/burguerKing_banner.jpg",
-      products: [
-        {
-          name: "Bacon King",
-          price: "L.130.00",
-          photo: "../../assets/baconKing.png"
-        },
-        {
-          name: "Hamburguesa con Queso",
-          price: "L.120.00",
-          photo: "../../assets/cheeseBurguer.png"
-        }
-      ]
-    },
-    {
-      name: "Chilis",
-      logo: "../../assets/chilis.png",
-      banner: "../../assets/burguerKing_banner.jpg",
-      products: [
-        {
-          name: "Bacon King",
-          price: "L.130.00",
-          photo: "../../assets/baconKing.png"
-        },
-        {
-          name: "Hamburguesa con Queso",
-          price: "L.120.00",
-          photo: "../../assets/cheeseBurguer.png"
-        }
-      ]
-    },
-    {
-      name: "Coco Baleadas",
-      logo: "../../assets/cocobaleadas.png",
-      banner: "../../assets/burguerKing_banner.jpg",
-      products: [
-        {
-          name: "Bacon King",
-          price: "L.130.00",
-          photo: "../../assets/baconKing.png"
-        },
-        {
-          name: "Hamburguesa con Queso",
-          price: "L.120.00",
-          photo: "../../assets/cheeseBurguer.png"
-        }
-      ]
-    },
-    {
-      name: "Furiwa",
-      logo: "../../assets/furiwa.png",
-      banner: "../../assets/burguerKing_banner.jpg",
-      products: [
-        {
-          name: "Bacon King",
-          price: "L.130.00",
-          photo: "../../assets/baconKing.png"
-        },
-        {
-          name: "Hamburguesa con Queso",
-          price: "L.120.00",
-          photo: "../../assets/cheeseBurguer.png"
-        }
-      ]
-    },
-  ]
+  COMPANY_API_URI = "http://localhost:3000/companies"
 
   public isInCompanyDetails: boolean = false;
   public addCompany: boolean = false;
 
-  constructor() { }
+  private selectedCompany = "";
+
+  constructor(private http: HttpClient) { }
 
   public getCompanies(){
-    return this.companies
+    return this.http.get<any>(`${this.COMPANY_API_URI}/`)
   }
 
-  public setCurrentCompany(company: Company){
-    this.company = company;
-  }
-
-  public getCurrentCompany(){
-    return this.company;
+  public setSelectedCompany(name: string){
+    this.selectedCompany = name
   }
 
   public getCompanyDetails(){
     this.isInCompanyDetails = true;
+    return this.http.get<any>(`${this.COMPANY_API_URI}/${this.selectedCompany}`)
   }
 
 }

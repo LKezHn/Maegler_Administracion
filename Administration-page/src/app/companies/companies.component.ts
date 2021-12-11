@@ -10,16 +10,17 @@ export class CompaniesComponent implements OnInit {
 
 
   companies: Company[] = []
-  constructor(public cS: CompaniesService) { }
+  constructor(public companyService: CompaniesService) { }
 
   ngOnInit(): void {
-    this.companies = this.cS.getCompanies();
+    this.companyService.getCompanies().subscribe( res => {{
+      this.companies = res.companies
+    }});
   }
 
-  getCompanyDetails(company: Company){
-    this.cS.setCurrentCompany(company)
-    this.cS.isInCompanyDetails = true
-
+  getCompanyDetails(name: string){
+    this.companyService.isInCompanyDetails = true
+    this.companyService.setSelectedCompany(name)
   }
 
 }
