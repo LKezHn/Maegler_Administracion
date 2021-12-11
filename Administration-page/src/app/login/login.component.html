@@ -8,11 +8,11 @@
         </div>
         <div>
             <div class="rear-bottom absolute"></div>
-            <form class="w-full max-w-sm mt-52 absolute form-login">
+            <form [formGroup]="loginForm" class="w-full max-w-sm mt-52 absolute form-login">
                 <p class="form-p text-center pt-8 pb-4">Correo Electrónico</p>
-                <input class="form-input mb-4 outline-none" type="text">
+                <input formControlName="email" class="form-input mb-4 outline-none" type="text">
                 <p class="form-p text-center pb-4">Contraseña</p>
-                <input class="form-input mb-8 outline-none" type="password">
+                <input formControlName="password" class="form-input mb-8 outline-none" type="password">
                 <button class=" form-b mb-16 pt-2 pb-2" type="button" (click)="login()">INGRESAR</button>
             </form>
         </div>

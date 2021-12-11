@@ -3,15 +3,19 @@
     <div style="background-color: var(--blue); color: var(--white);"
       class="cursor-pointer p-2 place-items-center h-full w-full rounded-md grid grid-rows-2">
       <div class=" h-full w-full p-5 grid place-items-center m-2 rounded-md" style="background-color: white;">
-        <i style="color: var(--red);" class="fas fa-user-circle fa-4x"></i>
+        <div class="profile-photo rounded-full"
+          style="background-image: url('http://localhost:3000{{driver.profilePhoto}}')">
+        </div>
       </div>
-      <div class="p-2 w-full mx-2">
+      <div class="p-2 w-full mx-2 mb-2">
         <div class="text-lg text-center font-semibold">
-          {{driver.name}}
+          {{driver.fullName}}
+          <p class="text-sm text-center font-medium mb-2">{{driver.email}}</p>
         </div>
         <div class="text-center font-semibold">
           <button class="uppercase px-3 py-1 text-sm rounded-md"
-            style="font-family: 'Puritan', sans-serif;background-color: var(--darkred); color: var(--white);" (click)="deleteDriver(driver.name)">Eliminar</button>
+            style="font-family: 'Puritan', sans-serif;background-color: var(--darkred); color: var(--white);"
+            (click)="deleteDriver(driver.fullName)">Eliminar</button>
         </div>
       </div>
     </div>

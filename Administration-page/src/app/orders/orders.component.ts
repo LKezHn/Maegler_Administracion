@@ -11,7 +11,7 @@ export class OrdersComponent implements OnInit {
 
   isOpen : boolean = false
   orders : Order[] = []
-  drivers : Driver[] = []
+  drivers : any = []
 
   constructor(private oS: OrdersService, private dS: DriversService) { }
 

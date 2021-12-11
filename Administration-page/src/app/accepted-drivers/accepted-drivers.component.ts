@@ -1,6 +1,6 @@
-import { ThrowStmt } from '@angular/compiler';
 import { Component, OnInit } from '@angular/core';
 import { Driver, DriversService } from '../drivers.service';
+
 
 @Component({
   selector: 'app-accepted-drivers',
@@ -11,14 +11,16 @@ export class AcceptedDriversComponent implements OnInit {
 
   acceptedDrivers: Driver[] = []
 
-  constructor(private dS: DriversService) { }
+  constructor(private driverService: DriversService) { }
 
   ngOnInit(): void {
-    this.acceptedDrivers = this.dS.getActiveDrivers();
+    this.driverService.getActiveDrivers().subscribe( res => {
+      this.acceptedDrivers = res.employees
+    })
   }
 
   deleteDriver(name: string){
-    this.dS.deleteDriver(name)
+    this.driverService.deleteDriver(name)
   }
 
 }
