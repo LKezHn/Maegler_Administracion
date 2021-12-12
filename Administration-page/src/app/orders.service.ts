@@ -1,3 +1,4 @@
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 
 export interface Order {
@@ -45,10 +46,10 @@ export class OrdersService {
     }
   ]
 
-  constructor() { }
+  constructor(private http: HttpClient) { }
 
   public getOrders(){
-    return this.orders
+    return this.http.get<any>("http://localhost:3000/ordenes/alls")
   }
 
 

@@ -1,5 +1,6 @@
 import { Location } from '@angular/common';
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { CompaniesService } from '../companies.service';
 
 @Component({
@@ -14,17 +15,40 @@ export class AddCompanyComponent implements OnInit {
   @Output()
   closeEvent = new EventEmitter<boolean>();
 
-  constructor(private cS: CompaniesService, private location: Location) { }
+  newProductForm = new FormGroup({
+    nombre: new FormControl("", Validators.required),
+    informacion: new FormControl("", Validators.required),
+    precio: new FormControl("", Validators.required),
+    imagen: new FormControl("", Validators.required)
+  })
+
+  constructor(private companyService: CompaniesService, private location: Location) { }
 
   ngOnInit(): void {
   }
 
+  onFileChange(event: any){
+    if(event.target.files.length > 0){
+      const file = event.target.files[0]
+      this.newProductForm.patchValue({
+        imagen: file
+      })
+    }
+  }
 
   addNewProduct(){
-    this.cS.addCompany = false;
-    this.cS.isInCompanyDetails = false;
-    this.closeEvent.emit(this.close)
+    this.companyService.addNewProduct(this.newProductForm.value).subscribe( res => {
+      this.companyService.addCompany = false;
+      this.companyService.isInCompanyDetails = false;
+      this.closeEvent.emit(this.close)
+    })
     //this.location.back()
+  }
+
+  cancel(){
+    this.companyService.addCompany = false;
+    this.companyService.isInCompanyDetails = false;
+    this.closeEvent.emit(this.close)
   }
 
 }

@@ -3,18 +3,15 @@
     <div style="background-color: var(--blue); color: var(--white);"
       class="cursor-pointer p-2 place-items-center h-full w-full rounded-md grid grid-rows-2">
       <div class=" h-full w-full p-5 grid place-items-center m-2 rounded-md" style="background-color: white;">
-        <img src="{{order.logo}}" alt="" width="120" height="120">
+        <img src="{{'http://localhost:3000/' + order.logo}}" alt="" width="120" height="120">
       </div>
       <div class="p-2 w-full mx-2">
-        <div class="text-lg text-center font-semibold uppercase">
-          Orden #{{order.id}}
-        </div>
         <div style="color: rgba(242, 242, 242, 0.7);">
           <div class="text-sm text-left">
-            Receptor: {{order.receiver}}
+            Receptor: Juan Carlos
           </div>
           <div class="text-sm text-left">
-            Direccion: {{order.direction}}
+            Direccion: {{order.direccion.Lat + "" + order.direccion.Lng}}
           </div>
           <div class=" mt-2 grid justify-items-center">
             <button class="text-sm uppercase px-3 py-1 rounded-md"

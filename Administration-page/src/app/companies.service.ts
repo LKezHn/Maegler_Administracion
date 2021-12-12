@@ -48,4 +48,15 @@ export class CompaniesService {
     return this.http.get<any>(`${this.COMPANY_API_URI}/${this.selectedCompany}`)
   }
 
+  addNewProduct({ nombre, precio, informacion, imagen}: { nombre: string, precio: string, informacion: string, imagen: File}){
+    const newProductForm = new FormData()
+    newProductForm.append("nombre", nombre)
+    newProductForm.append("precio", precio)
+    newProductForm.append("informacion", informacion)
+    newProductForm.append("imagen", imagen)
+
+    return this.http.post<any>(`${this.COMPANY_API_URI}/${this.selectedCompany}/products/add`, newProductForm)
+
+  }
+
 }

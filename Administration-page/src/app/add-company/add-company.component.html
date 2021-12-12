@@ -1,21 +1,27 @@
 <div class="h-screen w-full grid place-items-center" style="font-family: 'Puritan', sans-serif;">
-  <form  (ngSubmit)="addNewProduct()" class="p-3 text-center rounded-md" style="background-color: var(--red); color: var(--white);">
+  <form [formGroup]="newProductForm"  class="p-3 text-center rounded-md" style="background-color: var(--red); color: var(--white);">
     <p class="uppercase font-semibold">Agregar producto</p>
     <label class="py-2">
       Nombre
     </label><br>
-    <input class="w-full " style="background-color: var(--lightred);" type="text">
+    <input formControlName="nombre" class="w-full " style="background-color: var(--lightred);" type="text">
     <label class="py-2">
       Precio
     </label><br>
-    <input style="background-color: var(--lightred);" class="w-full" type="text">
+    <input formControlName="precio" style="background-color: var(--lightred);" class="w-full" type="text">
+    <label class="py-2">
+      Informacion
+    </label><br>
+    <input formControlName="informacion" style="background-color: var(--lightred);" class="w-full" type="text">
     <label class="py-2">
       Imagen
     </label><br>
-    <input class="w-full" style="background-color: var(--lightred);" type="text">
+    <div class="file-select" id="image-div">
+      <input (change)="onFileChange($event)" name="image" type="file" class="w-full rounded h-8 register-input">
+    </div>
     <div class="grid grid-cols-2 my-2">
-      <button type="submit" class=" mx-2 uppercase px-3 py-1 rounded" style="background-color: var(--blue); color: var(--white);">aceptar</button>
-      <button type="submit" class="mx-2 uppercase px-3 py-1 rounded" style="background-color: var(--darkred); color: var(--white);">cancelar</button>
+      <button (click)="addNewProduct()" type="button" class=" mx-2 uppercase px-3 py-1 rounded" style="background-color: var(--blue); color: var(--white);">aceptar</button>
+      <button (click)="cancel()" type="button" class="mx-2 uppercase px-3 py-1 rounded" style="background-color: var(--darkred); color: var(--white);">cancelar</button>
     </div>
   </form>
 </div>

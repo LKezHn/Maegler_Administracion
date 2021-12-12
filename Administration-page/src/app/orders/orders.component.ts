@@ -10,17 +10,19 @@ import { Order, OrdersService } from '../orders.service';
 export class OrdersComponent implements OnInit {
 
   isOpen : boolean = false
-  orders : Order[] = []
+  orders : any = []
   drivers : any = []
 
-  constructor(private oS: OrdersService, private dS: DriversService) { }
+  constructor(private orderService: OrdersService, private driverService: DriversService) { }
 
   ngOnInit(): void {
-    this.orders = this.oS.getOrders()
+    this.orderService.getOrders().subscribe( res => {
+      this.orders = res
+    })
   }
 
   openModal(){
-    this.drivers = this.dS.getActiveDrivers()
+    this.drivers = this.driverService.getActiveDrivers()
     this.isOpen = true
   }
 
